@@ -27,7 +27,7 @@ def _process_addrs(addr):
     resp = requests.get(addr)
     resp.raise_for_status()
     lines_resp = resp.text.strip().split('\n')
-    return lines_resp
+    return sorted(lines_resp)
 
 
 def read_ips():
