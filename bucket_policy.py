@@ -9,7 +9,7 @@ import requests
 
 from skel import S3_POLICY_SKEL
 
-OUTPUT_FOLDER = 'aws'
+OUTPUT_DIR = 'aws'
 S3 = boto3.client('s3')
 
 
@@ -48,12 +48,12 @@ def process_domain(domain):
 
 
 def write_to_file(domain, result):
-    if Path(OUTPUT_FOLDER).is_dir():
-        filepath = Path(OUTPUT_FOLDER) / f'{domain}-s3-policy.json'
+    if Path(OUTPUT_DIR).is_dir():
+        filepath = Path(OUTPUT_DIR) / f'{domain}-s3-policy.json'
         filepath.write_text(result)
         print(f'Wrote to file: {filepath}\n')
     else:
-        print('Could not locate output folder')
+        print('Could not locate output directory')
         sys.exit(1)
 
 
